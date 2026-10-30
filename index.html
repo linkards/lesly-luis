@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Boda - 04.11.2026 | Lesly & Luis</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Boda de Lesly & Luis — 04.11.2026">
+  <meta property="og:description" content="Con inmensa alegría los invitamos a celebrar nuestra boda el 4 de noviembre de 2026. ¡Acompáñanos en este día tan especial!">
+  <meta property="og:image" content="Patron.webp">
+  <meta property="og:image:alt" content="Invitación de Boda de Lesly & Luis">
+  <meta property="og:locale" content="es_ES">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Boda de Lesly & Luis — 04.11.2026">
+  <meta name="twitter:description" content="Con inmensa alegría los invitamos a celebrar nuestra boda el 4 de noviembre de 2026.">
+  <meta name="twitter:image" content="Patron.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            weddingBlue: '#465543',
+            weddingNavy: '#465543',
+            weddingDark: '#354133',
+            weddingLight: '#f0f3ef',
+            weddingCream: '#fbf9f5',
+            weddingBorder: '#465543'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            script: ['"Alex Brush"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    input, textarea {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    body {
+      background-color: #f7f4ed;
+      color: #465543;
+      font-family: 'Cormorant Garamond', serif;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+
+    .toile-pattern {
+      background-color: #fcfbfa;
+      background-image: 
+        radial-gradient(#465543 0.6px, transparent 0.6px), 
+        radial-gradient(#465543 0.6px, #fcfbfa 0.6px);
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
+      opacity: 0.98;
+    }
+
+    .ribbon-bow {
+      position: relative;
+      display: inline-block;
+    }
+
+    .fade-up {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .custom-check {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 1.15rem;
+      height: 1.15rem;
+      border: 1.5px solid #ffffff;
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+      display: inline-grid;
+      place-content: center;
+      transition: all 0.2s ease;
+      background-color: transparent;
+    }
+    .custom-check:checked {
+      background-color: #ffffff;
+    }
+    .custom-check:checked::after {
+      content: "✓";
+      color: #465543;
+      font-size: 0.85rem;
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .swatch-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(70, 85, 67, 0.12);
+      border: 1px solid rgba(70, 85, 67, 0.15);
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-music {
+      animation: spin-slow 8s linear infinite;
+    }
+  </style>
+</head>
+<body class="p-0 flex justify-center selection:bg-weddingBlue selection:text-white min-h-screen relative">
+
+  <!-- Elemento de Audio y Botón Flotante en la esquina superior derecha -->
+  <audio id="weddingMusic" loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <main class="w-full max-w-[440px] bg-white shadow-2xl overflow-hidden border-x border-[#e4ded4] flex flex-col items-center rounded-b-[40px] relative">
+
+    <section class="relative w-full px-5 pt-16 pb-20 flex flex-col items-center text-center overflow-hidden border-b border-[#ece6dc] bg-cover bg-center" style="background-image: url('Patron.webp');">
+      
+      <!-- Botón de música ubicado sobre la imagen principal en la esquina superior derecha -->
+      <div class="absolute top-4 right-4 z-20">
+        <button 
+          id="musicToggleBtn" 
+          onclick="toggleMusic()" 
+          type="button"
+          aria-label="Reproducir o detener música" 
+          class="w-10 h-10 rounded-full bg-white/90 text-weddingNavy border border-[#465543]/40 shadow-md flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 backdrop-blur-sm">
+          <svg id="musicIconPlay" class="w-4 h-4 ml-0.5 fill-current" viewBox="0 0 24 24" title="Reproducir música">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg id="musicIconPause" class="w-3.5 h-3.5 fill-current hidden" viewBox="0 0 24 24" title="Detener música">
+            <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="relative z-10 w-full max-w-[335px] border-[3px] border-[#465543] rounded-t-[175px] rounded-b-[175px] p-[5px] bg-white shadow-md">
+        <div class="w-full border-[1.5px] border-[#465543] rounded-t-[168px] rounded-b-[168px] px-6 pt-10 pb-16 bg-white flex flex-col items-center">
+        
+        <div class="w-full max-w-[270px] h-[58px] -mt-8 mb-1">
+          <svg viewBox="0 0 270 65" class="w-full h-full overflow-visible">
+            <defs>
+              <path id="archTextPath" d="M 28,58 A 110,54 0 0,1 242,58" fill="none" />
+            </defs>
+            <text fill="#465543" class="text-[12px] font-sans uppercase font-semibold tracking-[0.22em] opacity-90">
+              <textPath href="#archTextPath" startOffset="50%" text-anchor="middle">
+                INVITACIÓN DE BODA
+              </textPath>
+            </text>
+          </svg>
+        </div>
+
+        <div class="w-16 h-8 text-weddingNavy mb-8">
+          <svg viewBox="0 0 80 40" fill="none" stroke="currentColor" stroke-width="1.8" class="w-full h-full">
+            <ellipse cx="40" cy="18" rx="4.5" ry="3.5" fill="#465543" />
+            <path d="M40,18 C30,4 16,8 18,20 C19,26 29,24 40,18 Z" fill="rgba(70,85,67,0.08)" />
+            <path d="M40,18 C50,4 64,8 62,20 C61,26 51,24 40,18 Z" fill="rgba(70,85,67,0.08)" />
+            <path d="M37,20 C32,28 26,33 22,38" stroke-linecap="round" />
+            <path d="M43,20 C48,28 54,33 58,38" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <div class="relative mb-12 flex flex-col items-center">
+          <span class="text-[30px] sm:text-[32px] tracking-[0.16em] uppercase font-serif font-light text-weddingNavy leading-none">
+            LESLY
+          </span>
+          <span class="font-script text-[42px] sm:text-[46px] text-weddingNavy block -my-2.5 italic lowercase tracking-normal">
+            &
+          </span>
+          <span class="text-[30px] sm:text-[32px] tracking-[0.16em] uppercase font-serif font-light text-weddingNavy leading-none">
+            LUIS
+          </span>
+        </div>
+
+        <div class="max-w-[240px] mx-auto mb-14">
+          <p class="text-[10.5px] uppercase tracking-[0.18em] leading-relaxed font-sans text-weddingNavy/90 font-normal">
+            El destino nos tenía preparados para encontrarnos y hallar nuestra felicidad, la cual hoy deseamos compartir con ustedes.
+          </p>
+        </div>
+
+        <div class="pt-2">
+          <span class="font-serif text-[22px] tracking-[0.2em] font-medium text-weddingNavy">
+            04.11.2026
+          </span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Sección de los Padres con fondo limpio -->
+    <section class="w-full px-5 pt-8 pb-4 flex flex-col items-center bg-[#fbf9f6] border-b border-[#ece6dc]/60">
+      <div class="relative w-full max-w-[335px] text-center flex flex-col items-center">
+        <p class="font-serif text-[11px] tracking-[0.25em] uppercase text-weddingNavy/70 mb-4 font-medium">
+          Con la bendición de Dios y de nuestros padres
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 w-full text-center items-start">
+          <div class="flex flex-col items-center">
+            <span class="font-serif text-[12.5px] tracking-[0.18em] uppercase font-semibold text-weddingNavy mb-1 min-h-[38px] flex items-center justify-center text-center leading-tight">
+              Padres<br>de la Novia
+            </span>
+            <div class="w-6 h-px bg-weddingNavy/30 my-2"></div>
+            <p class="font-sans text-[10px] tracking-wide text-weddingNavy/85 font-normal leading-relaxed min-h-[36px] flex flex-col justify-center">
+              <span>Ing. Héctor Ruiz</span>
+              <span>Lic. Lourdes Velasco</span>
+            </p>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <span class="font-serif text-[12.5px] tracking-[0.18em] uppercase font-semibold text-weddingNavy mb-1 min-h-[38px] flex items-center justify-center text-center leading-tight">
+              Madre<br>del Novio
+            </span>
+            <div class="w-6 h-px bg-weddingNavy/30 my-2"></div>
+            <p class="font-sans text-[10px] tracking-wide text-weddingNavy/85 font-normal leading-relaxed min-h-[36px] flex flex-col justify-center">
+              <span>Sra. Erika Barrios</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección con Marco cubriendo exclusivamente Querida Familia y Calendario -->
+    <section class="w-full px-4 py-8 flex flex-col items-center border-b border-[#ece6dc] bg-[#fbf9f6]">
+      <div class="relative w-full max-w-[380px] min-h-[500px] sm:min-h-[530px] flex flex-col items-center justify-center p-8 sm:p-10 bg-contain bg-center bg-no-repeat" style="background-image: url('marco.webp');">
+        <div class="relative w-full max-w-[270px] text-center flex flex-col items-center my-0 z-10 py-6">
+
+          <div class="mb-5 px-1">
+            <p class="font-serif text-[15px] font-bold tracking-wider uppercase text-weddingNavy mb-2">
+              ¡Querida Familia y Amigos!
+            </p>
+            <p class="font-sans text-[10px] uppercase tracking-[0.16em] leading-relaxed text-weddingNavy/85 font-medium">
+              Con inmensa alegría los invitamos a celebrar nuestra boda civil, que tendrá lugar el 4 de noviembre de 2026.
+            </p>
+          </div>
+
+          <div class="flex flex-col items-center w-full">
+            <div class="w-12 h-px bg-weddingNavy/30 mx-auto mb-3"></div>
+
+            <h3 class="font-serif text-[16.5px] tracking-[0.2em] uppercase text-weddingNavy font-semibold mb-4">
+              Noviembre 2026
+            </h3>
+
+            <div class="max-w-[230px] w-full mx-auto text-weddingNavy mb-1">
+              <div class="grid grid-cols-7 text-[9.5px] font-sans font-medium text-weddingNavy/60 mb-2">
+                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              </div>
+
+              <div class="grid grid-cols-7 gap-y-1 text-[11.5px] font-serif font-medium items-center justify-items-center">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span>1</span>
+                <span>2</span><span>3</span>
+                
+                <div class="relative flex items-center justify-center w-6 h-6">
+                  <svg viewBox="0 0 32 32" fill="#465543" class="w-6 h-6 filter drop-shadow">
+                    <path d="M16 29s-12-7.5-12-16a7 7 0 0 1 12-4.5A7 7 0 0 1 28 13c0 8.5-12 16-12 16z"/>
+                  </svg>
+                  <span class="absolute text-white font-bold text-[10.5px] font-sans -mt-0.5">4</span>
+                </div>
+
+                <span>5</span><span>6</span><span>7</span><span>8</span>
+                <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span>
+                <span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span>
+                <span>30</span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full bg-weddingNavy text-white px-6 py-20 flex flex-col items-center text-center relative overflow-hidden">
+      <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full border border-white/5 pointer-events-none"></div>
+      <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full border border-white/5 pointer-events-none"></div>
+
+      <h2 class="text-[24px] tracking-[0.25em] font-serif uppercase font-light mb-8">
+        LUGAR
+      </h2>
+
+      <!-- Tarjeta de Ubicación -->
+      <div class="w-full max-w-[310px] p-6 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm flex flex-col items-center shadow-lg">
+        <div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center mb-3">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        
+        <span class="font-serif text-[21px] tracking-[0.18em] uppercase text-white font-medium mb-1">
+          Casa Carlota
+        </span>
+        
+        <span class="font-serif text-[13px] tracking-[0.2em] uppercase text-slate-200/90 font-light mb-3">
+          18:30 HRS
+        </span>
+
+        <div class="w-10 h-px bg-white/25 mb-3"></div>
+
+        <p class="font-sans text-[11px] uppercase tracking-[0.12em] text-slate-200 font-normal mb-1 text-center">
+          C. Veracruz 2301, Madero
+        </p>
+        <p class="font-sans text-[10px] uppercase tracking-[0.14em] text-slate-300 font-light mb-6 text-center">
+          Nuevo Laredo, Tamps.
+        </p>
+
+        <a 
+          href="https://maps.app.goo.gl/iu5Qy3rhGCjPAvtH6" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-weddingNavy font-sans text-[10.5px] font-semibold tracking-[0.18em] uppercase hover:bg-slate-100 transition shadow">
+          <span>Ver en Google Maps</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="w-full bg-[#fbf9f6] px-6 py-16 flex flex-col items-center text-center border-b border-[#ece6dc]">
+      <h3 class="font-serif text-[22px] tracking-[0.25em] uppercase text-weddingNavy font-normal mb-3">
+        CÓDIGO DE VESTIMENTA
+      </h3>
+      
+      <div class="w-8 h-px bg-weddingNavy/30 my-2"></div>
+      
+      <p class="font-serif text-[17px] tracking-[0.18em] uppercase text-weddingNavy font-medium mt-3 mb-2">
+        Semiformal
+      </p>
+
+      <p class="font-sans text-[10.5px] uppercase tracking-[0.16em] leading-relaxed text-weddingNavy/85 font-medium max-w-[290px]">
+        Estaremos felices de celebrar con ustedes en este día tan especial.
+      </p>
+    </section>
+
+    <section class="w-full bg-[#fbf9f6] px-5 py-16 flex flex-col items-center border-b border-[#ece6dc]">
+      <div class="relative w-full max-w-[335px] border-2 border-weddingNavy rounded-[12px] p-6 pt-9 pb-9 bg-white shadow-sm overflow-hidden text-center">
+        
+        <div class="absolute inset-0 pointer-events-none opacity-20 p-2">
+          <div class="w-full h-full border border-weddingNavy flex justify-between items-between">
+            <div class="w-8 h-8 border-t-2 border-l-2 border-weddingNavy"></div>
+            <div class="w-8 h-8 border-t-2 border-r-2 border-weddingNavy"></div>
+          </div>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center">
+          <h3 class="font-serif text-[22px] tracking-[0.25em] uppercase text-weddingNavy font-normal mb-2">
+            DETALLES
+          </h3>
+          
+          <div class="w-1.5 h-1.5 rounded-full bg-weddingNavy my-3"></div>
+
+          <p class="font-sans text-[10.5px] uppercase tracking-[0.16em] leading-relaxed text-weddingNavy/85 font-medium mb-6 px-2">
+            Su presencia es nuestro mejor regalo. Si desean tener un detalle con nosotros:
+          </p>
+
+          <div class="w-8 h-px bg-weddingNavy/30 my-2"></div>
+
+          <div class="w-full max-w-[270px] mt-4 p-5 rounded-xl bg-[#f7f5f0] border border-weddingNavy/20 flex flex-col items-center text-center">
+            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-weddingNavy shadow-sm mb-3 border border-weddingNavy/15">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+
+            <span class="font-serif text-[14px] uppercase tracking-[0.2em] font-semibold text-weddingNavy mb-1.5">
+              Lluvia de Sobres
+            </span>
+            <p class="font-sans text-[10px] uppercase tracking-[0.14em] text-weddingNavy/75 leading-relaxed font-normal">
+               Dispondremos de un buzón para lluvia de sobres el día del evento.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full bg-weddingNavy text-white px-6 py-16 flex flex-col items-center text-center">
+      
+      <h3 class="font-serif text-[24px] tracking-[0.25em] uppercase font-light mb-8">
+        CONFIRMACIÓN
+      </h3>
+
+      <form id="rsvpForm" class="w-full max-w-[325px] flex flex-col text-left space-y-6" onsubmit="event.preventDefault(); submitForm();">
+        
+        <div>
+          <label for="guestName" class="block font-sans text-[10px] uppercase tracking-[0.15em] text-slate-200 mb-2 leading-normal">
+            Nombre(s): *
+          </label>
+          <input 
+            type="text" 
+            id="guestName" 
+            required 
+            placeholder="Tu nombre completo"
+            class="w-full px-3 py-2.5 rounded-xl bg-[#eef3f8] text-[#173656] text-xs font-sans placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-white transition"
+          />
+        </div>
+
+        <div>
+          <span class="block font-sans text-[10px] uppercase tracking-[0.15em] text-slate-200 mb-3">
+            ¿Nos acompañarás? *
+          </span>
+          <div class="space-y-3">
+            <label class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:bg-white/10 transition">
+              <input 
+                type="radio" 
+                name="attendance" 
+                value="si" 
+                required 
+                class="w-4 h-4 accent-white cursor-pointer"
+              />
+              <span class="font-sans text-[11px] uppercase tracking-[0.12em] text-slate-100 font-medium">
+                Sí, asistiré
+              </span>
+            </label>
+
+            <label class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/15 cursor-pointer hover:bg-white/10 transition">
+              <input 
+                type="radio" 
+                name="attendance" 
+                value="no" 
+                class="w-4 h-4 accent-white cursor-pointer"
+              />
+              <span class="font-sans text-[11px] uppercase tracking-[0.12em] text-slate-100 font-medium">
+                No podré asistir
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-4 flex justify-center">
+          <button 
+            type="submit" 
+            class="w-56 py-2.5 px-6 rounded-full bg-[#fbf9f6] text-weddingNavy font-sans text-[11.5px] font-semibold tracking-[0.2em] uppercase hover:bg-white active:scale-95 transition-all shadow-md flex items-center justify-center gap-2">
+            <span>ENVIAR POR WHATSAPP</span>
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <div id="confirmationMessage" class="hidden mt-8 p-4 rounded-xl bg-white/10 border border-white/20 text-center text-xs text-white max-w-[280px]">
+        <p class="font-medium" id="responseTitle">¡Muchas gracias!</p>
+        <p class="text-[11px] text-slate-200 mt-1" id="responseText">Hemos preparado tu mensaje de WhatsApp.</p>
+      </div>
+
+    </section>
+
+    <footer class="w-full bg-[#fbf9f6] py-16 px-6 text-center flex flex-col items-center rounded-b-[40px]">
+      <p class="font-serif text-[26px] tracking-[0.2em] font-normal uppercase text-weddingNavy">
+        ¡Hasta muy pronto!
+      </p>
+      <div class="w-12 h-px bg-weddingNavy/30 mt-4 mb-5"></div>
+      <span class="font-sans text-[10px] tracking-[0.25em] uppercase text-weddingNavy/60">
+        04 • 11 • 2026
+      </span>
+    </footer>
+
+  </main>
+
+  <script>
+    function copyData(elementId, btnElement) {
+      const text = document.getElementById(elementId).innerText.replace(/\s+/g, '');
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      tempInput.setSelectionRange(0, 99999);
+      try {
+        document.execCommand('copy');
+        const toast = document.getElementById('copyToast');
+        if (toast) {
+          toast.classList.remove('hidden');
+          setTimeout(() => {
+            toast.classList.add('hidden');
+          }, 2200);
+        }
+      } catch (err) {
+        console.error('Error al copiar:', err);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    const WEDDING_PHONE = '19563244805';
+
+    // Control de Música de Fondo
+    const musicAudio = document.getElementById('weddingMusic');
+    const playIcon = document.getElementById('musicIconPlay');
+    const pauseIcon = document.getElementById('musicIconPause');
+    const musicBtn = document.getElementById('musicToggleBtn');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (!musicAudio) return;
+      if (isPlaying) {
+        musicAudio.pause();
+        isPlaying = false;
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        musicBtn.classList.remove('ring-2', 'ring-[#465543]/40');
+      } else {
+        musicAudio.play().then(() => {
+          isPlaying = true;
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+          musicBtn.classList.add('ring-2', 'ring-[#465543]/40');
+        }).catch((err) => {
+          console.warn('La reproducción fue bloqueada por el navegador:', err);
+        });
+      }
+    }
+
+    // Intento de inicio automático con la primera interacción del usuario
+    const autoPlayOnFirstTouch = () => {
+      if (!isPlaying && musicAudio) {
+        musicAudio.play().then(() => {
+          isPlaying = true;
+          playIcon.classList.add('hidden');
+          pauseIcon.classList.remove('hidden');
+          musicBtn.classList.add('ring-2', 'ring-[#465543]/40');
+        }).catch(() => {});
+      }
+      document.removeEventListener('click', autoPlayOnFirstTouch);
+      document.removeEventListener('touchstart', autoPlayOnFirstTouch);
+    };
+
+    document.addEventListener('click', autoPlayOnFirstTouch, { once: true });
+    document.addEventListener('touchstart', autoPlayOnFirstTouch, { once: true });
+
+    document.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+    });
+
+    function submitForm() {
+      const nameInput = document.getElementById('guestName');
+      const attendance = document.querySelector('input[name="attendance"]:checked');
+      const form = document.getElementById('rsvpForm');
+      const confirmation = document.getElementById('confirmationMessage');
+      const responseTitle = document.getElementById('responseTitle');
+      const responseText = document.getElementById('responseText');
+
+      if (nameInput.value.trim() !== '' && attendance) {
+        const guestName = nameInput.value.trim();
+        let messageText = '';
+
+        if (attendance.value === 'si') {
+          responseTitle.textContent = `¡Qué alegría, ${guestName}!`;
+          responseText.textContent = 'Abriendo WhatsApp para enviar tu confirmación...';
+          messageText = `¡Hola! Confirmo con mucha alegría mi asistencia a su boda el 4 de noviembre de 2026.\n\nNombre: ${guestName}\nEstado: ✅ Sí asistiré`;
+        } else {
+          responseTitle.textContent = `Gracias por avisarnos, ${guestName}`;
+          responseText.textContent = 'Abriendo WhatsApp para enviar tu mensaje...';
+          messageText = `¡Hola! Agradezco de todo corazón la invitación a su boda, pero lamentablemente no podré asistir. Les deseo el mayor de los éxitos y mucha felicidad en este día tan especial.\n\nNombre: ${guestName}\nEstado: ❌ No podré asistir`;
+        }
+
+        confirmation.classList.remove('hidden');
+        confirmation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        const encodedMessage = encodeURIComponent(messageText);
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${WEDDING_PHONE}&text=${encodedMessage}`;
+
+        setTimeout(() => {
+          window.open(whatsappUrl, '_blank');
+        }, 600);
+      }
+    }
+  </script>
+</body>
+</html>
